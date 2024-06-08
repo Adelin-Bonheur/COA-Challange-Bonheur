@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif; /* Sets the font for the body */
+    background-color: #000; /* Background color of the body */
+    color: #fff; /* Text color */
+}
+
+/* Gallery styling */
+.gallery {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Center align items */
+    width: 1178px; /* Width of the gallery */
+    height: 588px; /* Height of the gallery */
+    margin: auto; /* Center the gallery horizontally */
+}
+
+/* Gallery item styling */
+.gallery-item {
+    position: relative; /* Position relative for absolute positioning of children */
+    flex: 1; /* Flex-grow to fill the available space */
+    width: 293px; /* Width of each gallery item */
+    height: 588px; /* Height of each gallery item */
+    margin: 0 1px; /* Margin between items */
+    overflow: hidden; /* Ensure the zoom effect stays within bounds */
+}
+
+.gallery-item img {
+    width: 293px;
+    height: 588px;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition effects */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Zoom effect */
+    filter: grayscale(100%) blur(5px); /* Black and white with blur effect */
+}
+
+.gallery-item div {
+    padding: 20px;
+}
+
+/* Caption styling */
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    transition: bottom 0.3s ease; /* Smooth transition effects */
+}
+
+.gallery-item:hover .caption {
+    bottom: 50px; /* Move caption up on hover */
+}
+
+/* Font addition */
+@font-face {
+    src: url(../fonts/DINCondensed-Bold.ttf); /* Font file location */
+    font-family: din;
+}
+
+.caption h2 {
+    margin: 0;
+    font-family: din;
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 38px;
+}
+
+@font-face {
+    src: url(../fonts/Poppins-Regular.ttf);
+    font-family: poppins;
+}
+
+.caption p {
+    margin: 0; /* No margin */
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.02px;
+    font-family: poppins;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+.know-more {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    color: cyan;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+    font-family: poppins;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.know-more:hover {
+    cursor: pointer;
+}
+
+.know-more::after {
+    content: ' \1F862'; /* Unicode for right arrow */
+    margin-left: 3px; /* Margin before the arrow */
+}
+
+.gallery-item:hover .know-more {
+    opacity: 0.9; /* Show the "Know more" text on hover */
+}
+
+ /* Stlyling pop-up interface */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);  /* Background with transparency */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center justify */
+    z-index: 1000; /* Stack order */
+}
+
+.popup-image {
+    max-width: 90%;
+    max-height: 70%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for image */
+    margin-bottom: 20px;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-button:hover {
+    color: cyan;
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    overflow-x: auto;
+    width: 90%;
+    height: 50px;
+}
+
+.thumbnail {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.thumbnail:hover, .thumbnail.selected {
+    opacity: 0.8; /* Change opacity on hover and selected */
+    border: 1px solid cyan; /* Border color */
+}
+
+
+/* Stlying the mobile design */
+@media (max-width: 768px) {
+.gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    top: 1490px;
+    left: -355px;
+    gap: 2px; /* Gap between items */
+    margin: auto;
+}
+
+.gallery-item {
+    position: relative;
+    flex: 1;
+    width: 98.5px;
+    height: 600px;
+    margin: 0px;
+    overflow: hidden; /* Ensure the zoom effect stays within bounds */
+}
+
+.gallery-item img {
+    width: 98.5px;
+    height: 600px;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Zoom effect */
+    filter: grayscale(100%) blur(5px); /* Black and white with blur effect */
+}
+
+.gallery-item div {
+    padding: 20px;
+}
+
+    .gallery-item:hover .caption,
+    .caption,
+    .know-more {
+        display: none; /* Hide caption and "Know more" text on mobile */
+    }
+}
